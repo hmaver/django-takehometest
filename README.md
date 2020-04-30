@@ -1,1 +1,1 @@
-# django-takehometest
+# django-takehometest for SmallCloud Internship
