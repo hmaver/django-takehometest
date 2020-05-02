@@ -10,13 +10,14 @@
 
     <p class="blog-post-meta"> 
         <h2>{{post.title}} </h2> by {{post.author}} </p>
-    <p> {{post.description|linebreaks}} </p>
+    <div class = "alert alert-secondary" role="alert">{{post.description|linebreaks}} </div>
     
   </div>
         {% if user.is_authenticated %}
             <nav class="blog-pagination" >
-                <a class="btn btn-outline-primary" href="{% url 'homepage:post_edit' pk=post.pk %}">Edit</a>
-                <a class="btn btn-outline-red" href="{% url 'homepage:delete_post' pk=post.pk %}">Delete</a>
+                <a class="btn btn-outline-primary" href="{% url 'homepage:post_edit' pk=post.pk %}"><i class="fa fa-edit"></i>  Edit</a>
+                <a href="{% url 'homepage:delete_post' pk=post.pk %}" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
+
             </nav>
             
         {% endif %}

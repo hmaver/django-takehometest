@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<p class="display-4" >Latest Posts</p>
 
 {% if latest_posts %}
-    {% for post in latest_posts %}
-        <div class="blog-post" style="padding-top: 5px;">
-            <h2 class="blog-post-title "><a style="text-decoration:none" href="{% url 'homepage:detail' pk=post.pk %}">{{ post.title }}</a>  </h2>
-            <p class="blog-post-meta"> {{post.created_at}} by {{post.author}} </blockquote> </p>
-            <p> {{post.description|truncatewords:50|linebreaks}} </p>
-      </div>
-    {% endfor %}
+{% for post in latest_posts %}
+<div class="blog-post" style="padding-top: 5px;">
+    <h2 class="blog-post-title "><a style="text-decoration:none"
+            href="{% url 'homepage:detail' pk=post.pk %}">{{ post.title }}</a> </h2>
+    <p class="blog-post-meta"> {{post.created_at}} by {{post.author}} </blockquote>
+    </p>
+    <p> {{post.description|truncatewords:50|linebreaks}} </p>
+</div>
+{% endfor %}
 {% else %}
-        <p>No posts available</p>
+<p>No posts available</p>
 {% endif %}
 {% endblock %}
