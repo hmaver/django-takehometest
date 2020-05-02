@@ -8,7 +8,8 @@
 <a class="btn btn-outline-primary" href="{% url 'homepage:index' %}">Back to Posts</a>
 <div class="post-preview" style="padding-top: 15px;">
 
-    <p class="blog-post-meta"> {{post.title}} by {{post.author}} </p>
+    <p class="blog-post-meta"> 
+        <h2>{{post.title}} </h2> by {{post.author}} </p>
     <p> {{post.description|linebreaks}} </p>
     
   </div>
