@@ -6,17 +6,16 @@
 {%block content%}
 
 <a class="btn btn-outline-primary" href="{% url 'homepage:index' %}">Back to Posts</a>
-
-<div class="blog-post">
+<div class="post-preview" style="padding-top: 15px;">
 
     <p class="blog-post-meta"> {{post.title}} by {{post.author}} </p>
     <p> {{post.description|linebreaks}} </p>
     
   </div>
         {% if user.is_authenticated %}
-            <nav class="blog-pagination">
-                <a class="btn btn-outline-primary" href="{{post.id}}">Delete</a>
-                <a class="btn btn-outline-primary" href="{{post.id}}">Delete</a>
+            <nav class="blog-pagination" >
+                <a class="btn btn-outline-primary" href="{% url 'homepage:post_edit' pk=post.pk %}">Edit</a>
+                <a class="btn btn-outline-red" href="{% url 'homepage:delete_post' pk=post.pk %}">Delete</a>
             </nav>
             
         {% endif %}

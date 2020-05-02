@@ -22,19 +22,48 @@
             font-size: 3.5rem;
           }
         }
+
+        .btn-outline-red {
+            color: #bd2130;
+            border-color: #bd2130;
+        }
+
+        .btn-outline-green {
+            color:#28a745;
+            border-color: #28a745;
+        }
       </style>
 
     <title>Home {% block title %} {% endblock %}</title> 
 </head>
 
 <body>
-    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top" >
+        <div class="container">
+          <a class="navbar-brand" href="">Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'homepage:index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'homepage:post_new' %}">Create New Post</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container" style="padding-top: 70px;">
         <div class="row">
             <div class="col-md-6 m-auto">
                 {% block content %} {% endblock %}
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

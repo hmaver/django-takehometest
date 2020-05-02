@@ -12,7 +12,7 @@ from .models import Post, Author
 
 # Get blog posts and display posts
 def index(request):
-    latest_posts = Post.objects.order_by('-created_date')[:5]
+    latest_posts = Post.objects.order_by('-created_date')[:10]
     context = {'latest_posts': latest_posts}
 
     return render(request, 'homepage/index.html', context)
@@ -39,16 +39,22 @@ def post_new(request):
         form = PostForm()
     return render(request, 'post_edit.html', {'form': form})
 
+# Edit Existing Post
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('homepage:detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'post_edit.html', {'form': form})
+
+# Delete Post
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('homepage:index')
