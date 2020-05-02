@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1 class="text-center mb-3">Latest Posts</h1>
+<a class="btn btn-outline-primary text-center" href="{% url 'homepage:post_new' %}">Create New Post</a>
+
 {% if latest_posts %}
     {% for post in latest_posts %}
         <div class="blog-post">
-            <h2 class="blog-post-title"><a style="text-decoration:none" href="{{post.id}}">{{ post.title }}</a>  </h2>
-            <p class="blog-post-meta"> {{post.created_at}} by <blockquote> {{post.author}} </blockquote> </p>
+            <h2 class="blog-post-title"><a style="text-decoration:none" href="{% url 'homepage:detail' pk=post.pk %}">{{ post.title }}</a>  </h2>
+            <p class="blog-post-meta"> {{post.created_at}} by {{post.author}} </blockquote> </p>
             <p> {{post.description|truncatewords:50|linebreaks}} </p>
 
       </div>

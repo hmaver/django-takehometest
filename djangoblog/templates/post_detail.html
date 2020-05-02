@@ -4,18 +4,19 @@
 {% block page_title %} {{post.title}} {% endblock page_title %}
 
 {%block content%}
+
 <a class="btn btn-outline-primary" href="{% url 'homepage:index' %}">Back to Posts</a>
 
 <div class="blog-post">
 
-    <p class="blog-post-meta"> {{post.title}} by  {{post.author}} </p>
+    <p class="blog-post-meta"> {{post.title}} by {{post.author}} </p>
     <p> {{post.description|linebreaks}} </p>
     
   </div>
         {% if user.is_authenticated %}
             <nav class="blog-pagination">
                 <a class="btn btn-outline-primary" href="{{post.id}}">Delete</a>
-                <a class="btn btn-outline-secondary" href="{% url 'homepage:edit' %}">Edit</a>
+                <a class="btn btn-outline-primary" href="{{post.id}}">Delete</a>
             </nav>
             
         {% endif %}
